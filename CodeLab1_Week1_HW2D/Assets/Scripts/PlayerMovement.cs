@@ -90,13 +90,8 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true; //tells program that the player is grounded
         }
-        if (other.gameObject.CompareTag("coin")) //check if the player runs into coin
-        {
-            Debug.Log("collider working");
-            coinCount += 1; //adds a point the coin count
-            print(coinCount);
-            Destroy(other.gameObject); //destroys coin once the player gets it
-        } 
+        
+        
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -106,6 +101,17 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("coin")) //check if the player runs into coin
+        {
+            Debug.Log("collider working");
+            coinCount += 1; //adds a point the coin count
+            print(coinCount);
+            Destroy(other.gameObject); //destroys coin once the player gets it
+        } 
     }
     
     
